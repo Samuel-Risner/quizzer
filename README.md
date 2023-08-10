@@ -1,2 +1,2 @@
 # quizzer
-A static web app for quizzes.
+Eine statische Website um Quizze zu hosten.
