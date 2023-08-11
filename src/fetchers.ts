@@ -1,4 +1,6 @@
-export async function fetchOverview() {
-    const res = await fetch("data.json");
+import settings from "./settings";
+
+export async function fetchNamesTrueOrFalse(): Promise<string[]> {
+    const res = await fetch(settings.dataUrls.names.trueOrFalse);
     return res.json();
 }
