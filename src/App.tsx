@@ -2,11 +2,11 @@ import React from "react";
 import { useQuery } from "react-query";
 
 import { fetchOverview } from "./fetchers";
-import Menu from "./menu/Menu";
 import Create from "./create/Create";
 import Settings from "./settings/Settings";
 import Select from "./select/Select";
 import Edit from "./edit/Edit";
+import Menu from "./components/Menu";
 
 export default function App() {
     // const { data, status } = useQuery("overview", fetchOverview);
@@ -25,7 +25,7 @@ export default function App() {
     //     </div>
 
     return (
-        <Menu optionStyle="bg-red-500" optionStyleSelected="bg-blue-500" options={[
+        <Menu options={[
             { name: "Frage oder Quiz auswählen", component: <Select />},
             { name: "Einstellungen", component: <Settings /> },
             { name: "Frage oder Quiz Erstellen", component: <Create /> },

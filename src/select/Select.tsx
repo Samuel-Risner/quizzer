@@ -1,10 +1,10 @@
-import Menu from "../menu/Menu";
+import Menu from "../components/Menu";
 import Questions from "./Questions";
 import Quizzes from "./Quizzes";
 
 export default function Select() {
     return (
-        <Menu optionStyle="bg-green-500" optionStyleSelected="bg-pink-500" options={[
+        <Menu options={[
             { name: "Quizze", component: <Quizzes /> },
             { name: "Fragen", component: <Questions />}
         ]} />

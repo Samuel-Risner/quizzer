@@ -7,12 +7,12 @@ type Option = {
 
 type Props = {
     options: Option[];
-    optionStyle: string;
-    optionStyleSelected: string;
-    menuStyle?: string;
+    optionBgColor?: string;
+    optionSelectedBgColor?: string;
+    menuBgColor?: string;
 }
 
-export default function Menu({ options, optionStyle, optionStyleSelected, menuStyle="flex flex-row m-2 gap-2" }: Props) {
+export default function Menu({ options, menuBgColor="bg-neutral-300", optionBgColor="bg-slate-400", optionSelectedBgColor="bg-neutral-100" }: Props) {
     const [ selectedOption, setSelectedOption ] = useState<number>(0);
 
     const changeOption = (index: number) => {
@@ -22,12 +22,12 @@ export default function Menu({ options, optionStyle, optionStyleSelected, menuSt
 
     return (
         <>
-            <div className={ menuStyle }>
+            <div className={ `flex flex-row p-2 gap-2 ${menuBgColor}` }>
                 { options.map((option: Option, index: number) => {
                     return (
                         <button
                             key={ index }
-                            className={ selectedOption === index? optionStyleSelected : optionStyle }
+                            className={ `p-1 ${selectedOption === index? `text-neutral-500 ${optionSelectedBgColor}` : optionBgColor}` }
                             onClick={ () => { changeOption(index); } }
                         >{ option.name }</button>
                     )
