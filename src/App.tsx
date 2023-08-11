@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 
 import { fetchOverview } from "./fetchers";
 import Create from "./create/Create";
-import Settings from "./settings/Settings";
+import Settings from "./appSettings/Settings";
 import Select from "./select/Select";
 import Edit from "./edit/Edit";
 import Menu from "./components/Menu";
