@@ -1,9 +1,9 @@
-import dataTypes from "./dataTypes";
+import dataUrls from "./dataUrls";
 import general from "./general";
 import images from "./images";
 
 export default {
-    dataTypes: dataTypes,
+    dataUrls: dataUrls,
     general: general,
     images: images
 }
