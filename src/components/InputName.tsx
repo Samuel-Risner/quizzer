@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
+import DataHandlerParent from "../dataHandlers/parents";
 
 type Props = {
     fetchNamesFunction: () => Promise<string[]>;
-    presetName?: string;
-    setName: (name: string) => void;
+    dataHandler: DataHandlerParent;
 }
 
-export default function InputName({ fetchNamesFunction, presetName="", setName }: Props) {
-    const [ name, changeName ] = useState<string>(presetName);
+export default function InputName({ fetchNamesFunction, dataHandler }: Props) {
+    const [ name, changeName ] = useState<string>(dataHandler.getNameOrEmptyString());
     const [ nameExists, changeNameExists ] = useState<boolean | null>(null);
     const { data, status } = useQuery("overview", fetchNamesFunction);
 
     if (status === "loading") return <div>Bereits vorhandene Namen werden geladen...</div>;
-    if ((status === "error") || (data === undefined)) return <div>Die bereits vorhandenen Namen konnten nicht geladen werden.</div>;
+    if ((status === "error") || (data === undefined)) return <div>Die bereits vorhandenen Namen konnten nicht geladen werden</div>;
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -29,7 +29,7 @@ export default function InputName({ fetchNamesFunction, presetName="", setName }
 
         changeNameExists(false);
         changeName(newName);
-        setName(name);
+        dataHandler.setName(name);
     }
 
     let nameExistsJSX: JSX.Element = <></>;
