@@ -5,6 +5,7 @@ import UseImage from "../../components/UseImage";
 import { fetchNamesTrueOrFalse } from "../../fetchers";
 import SelectAppearance from "./SelectAppearance";
 import TrueOrFalseDataHandler from "../../dataHandlers/trueOrFalse";
+import InputOptions from "./InputOptions";
 
 export default function TrueOrFalse() {
     const dataHandler = new TrueOrFalseDataHandler();
@@ -13,6 +14,7 @@ export default function TrueOrFalse() {
         <div>
             <InputName fetchNamesFunction={ fetchNamesTrueOrFalse } dataHandler={ dataHandler } />
             <SelectAppearance dataHandler={ dataHandler } />
+            <InputOptions dataHandler={ dataHandler } />
             <UseImage />
         </div>
     );
