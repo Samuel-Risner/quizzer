@@ -4,25 +4,19 @@ export default class TrueOrFalseDataHandler extends DataHandlerParent {
     
     constructor(
         private name: string | null = null,
-        private trueText: string | null = null,
-        private falseText: string | null = null,
+        private text: string | null = null,
         private imgUrl: string | null = null,
         private appearanceIndex: number = 0
     ) {
         super();
-        console.log("foo7");
     }
 
     setName(name: string | null) {
         this.name = name;
     }
 
-    setTrueText(trueText: string | null) {
-        this.trueText = trueText;
-    }
-
-    setFalseText(falseText: string | null) {
-        this.falseText = falseText;
+    setText(text: string | null) {
+        this.text = text;
     }
 
     setImgUrl(imgUrl: string | null) {
@@ -46,6 +40,6 @@ export default class TrueOrFalseDataHandler extends DataHandlerParent {
     }
 
     canBeSaved(): boolean {
-        return (this.name !== null) && (this.trueText !== null) && (this.falseText !== null);
+        return (this.name !== null) && (this.text !== null) && (this.name !== "");
     }
 }
