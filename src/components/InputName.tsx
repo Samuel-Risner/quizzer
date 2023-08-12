@@ -1,26 +1,16 @@
 import React, { useState } from "react";
-import { useQuery } from "react-query";
 
 type Props = {
     name: string;
     changeName: (name: string) => void;
-    fetchNamesFunction: () => Promise<string[]>;
+    allNames: string[];
 }
 
-export default function InputName({ name, changeName, fetchNamesFunction }: Props) {
+export default function InputName({ name, changeName, allNames }: Props) {
     const [ nameExists, changeNameExists ] = useState<boolean>(true);
-    const { data, status } = useQuery("overview", fetchNamesFunction);
-
-    if (status === "loading") return <div>Bereits vorhandene Namen werden geladen...</div>;
-    if ((status === "error") || (data === undefined)) return <div>Die bereits vorhandenen Namen konnten nicht geladen werden</div>;
 
     const handleNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (data.includes(e.currentTarget.value)) {
-            changeNameExists(true);
-            return;
-        }
-
-        changeNameExists(false);
+        changeNameExists(allNames.includes(e.currentTarget.value));
         changeName(e.currentTarget.value);
     }
 
