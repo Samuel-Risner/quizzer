@@ -41,6 +41,10 @@ export default class TrueOrFalseDataHandler extends DataHandlerParent {
         return this.name === null? "" : this.name;
     }
 
+    getImgUrl(): string | null {
+        return this.imgUrl;
+    }
+
     canBeSaved(): boolean {
         return (this.name !== null) && (this.trueText !== null) && (this.falseText !== null);
     }
