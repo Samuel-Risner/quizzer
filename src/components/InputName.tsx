@@ -29,7 +29,7 @@ export default function InputName({ fetchNamesFunction, dataHandler }: Props) {
 
         changeNameExists(false);
         changeName(newName);
-        dataHandler.setName(name);
+        dataHandler.setName(newName);
     }
 
     let nameExistsJSX: JSX.Element = <></>;
