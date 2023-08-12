@@ -15,21 +15,15 @@ export default function InputName({ fetchNamesFunction, dataHandler }: Props) {
     if (status === "loading") return <div>Bereits vorhandene Namen werden geladen...</div>;
     if ((status === "error") || (data === undefined)) return <div>Die bereits vorhandenen Namen konnten nicht geladen werden</div>;
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.currentTarget);
-        const newName = formData.get("name") as string;
-        
-        if (newName === null) return;
-        if (data.includes(newName)) {
+    const handleNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (data.includes(e.currentTarget.value)) {
             changeNameExists(true);
             return;
         }
 
         changeNameExists(false);
-        changeName(newName);
-        dataHandler.setName(newName);
+        changeName(e.currentTarget.value);
+        dataHandler.setName(e.currentTarget.value);
     }
 
     let nameExistsJSX: JSX.Element = <></>;
@@ -44,14 +38,11 @@ export default function InputName({ fetchNamesFunction, dataHandler }: Props) {
 
     return (
         <div>
-            <form onSubmit={ handleSubmit }>
-                <label>
-                    Bitte den Namen eingeben:
-                    <input defaultValue={ name } type="text" name="name" />
-                </label>
-                <button type="submit">überprüfen</button>
-                { nameExistsJSX }
-            </form>
+            <label>
+                Bitte den Namen eingeben:
+                <input onChange={ handleNameInput } defaultValue={ name } type="text" name="name" />
+            </label>
+            { nameExistsJSX }
         </div>
     );
 }
