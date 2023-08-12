@@ -9,7 +9,7 @@ type Props = {
 
 export default function AppearancePart({ url, altText, info, index, onSelect, selectedIndex }: Props) {
     return (
-        <button className={ `h-full ${index === selectedIndex? "border-4 rounded-lg p-1 border-black" : ""}` } onClick={ () => { onSelect(index); }}>
+        <button type="button" className={ `h-full ${index === selectedIndex? "border-4 rounded-lg p-1 border-black" : ""}` } onClick={ () => { onSelect(index); }}>
             <img className="h-full" src={ url } alt={ altText } title={ info } />
         </button>
     );
