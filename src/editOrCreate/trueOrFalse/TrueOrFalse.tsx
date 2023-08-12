@@ -15,7 +15,7 @@ export default function TrueOrFalse() {
             <InputName fetchNamesFunction={ fetchNamesTrueOrFalse } dataHandler={ dataHandler } />
             <SelectAppearance dataHandler={ dataHandler } />
             <InputOptions dataHandler={ dataHandler } />
-            <UseImage />
+            <UseImage dataHandler={ dataHandler } />
         </div>
     );
 }
