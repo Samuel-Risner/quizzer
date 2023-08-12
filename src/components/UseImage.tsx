@@ -26,13 +26,14 @@ export default function UseImage({ url, changeUrl, useImage, changeUseImage }: P
         <div>
             <label>
                 Bild benutzen:
-                <input type="checkbox" onChange={ handleCheckboxChange } />
+                <input type="checkbox" onChange={ handleCheckboxChange } className="ml-2" />
             </label>
+            <br />
             <label>
                 Bitte URL eingeben:
-                <input disabled={ !useImage } onChange={ handleOnChangeUrlInput } />
+                <input disabled={ !useImage } onChange={ handleOnChangeUrlInput } className="bg-neutral-300 ml-2 rounded-lg disabled:bg-zinc-100 px-2" />
             </label>
-            { useImage? <img src={ url } /> : <></> }
+            { useImage? <img src={ url } className="h-30" /> : <></> }
         </div>
     );
 }

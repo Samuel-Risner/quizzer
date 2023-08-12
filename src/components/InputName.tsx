@@ -25,10 +25,10 @@ export default function InputName({ name, changeName, allNames }: Props) {
     }
 
     return (
-        <div>
+        <div className="mx-auto">
             <label>
                 Bitte den Namen eingeben:
-                <input onChange={ handleNameInput } defaultValue={ name } type="text" name="name" />
+                <input onChange={ handleNameInput } defaultValue={ name } type="text" name="name" className="bg-neutral-300 rounded-lg ml-2 px-2" />
             </label>
             { nameCheckJSX }
         </div>

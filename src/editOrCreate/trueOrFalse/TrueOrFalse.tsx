@@ -50,8 +50,8 @@ export default function TrueOrFalse() {
 
     return (
         <div>
-            <form onSubmit={ newQuestion }>
-                <button type="submit">Neue Frage</button>
+            <form onSubmit={ newQuestion } className="flex flex-col gap-2 text-center p-2">
+                <button type="submit" className="bg-pink-400 px-2 rounded-lg mx-auto">Neue Frage</button>
                 { currentlyEditing? <>
                     <InputName name={ questionName } changeName={ changeQuestionName } allNames={ data } />
                     <SelectAppearance appearanceIndex={ appearanceIndex } changeAppearanceIndex={ changeAppearanceIndex } />

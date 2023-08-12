@@ -13,8 +13,9 @@ export default function InputQuestion({ question, changeQuestion }: Props) {
         <div>
             <label>
                 Bitte die Frage eingeben:
-                <input defaultValue={ question } onChange={ handleChange } type="text" name="text" />
+                <input defaultValue={ question } onChange={ handleChange } type="text" name="text" className="ml-2 bg-neutral-300 rounded-lg px-2" />
             </label>
+            { question === ""? <div className="text-red-500">Bitte eine Frage eingeben!</div> : <></>}
         </div>
     );
 }

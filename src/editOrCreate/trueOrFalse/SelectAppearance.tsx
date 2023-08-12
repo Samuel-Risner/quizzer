@@ -14,7 +14,7 @@ export default function SelectAppearance({ appearanceIndex, changeAppearanceInde
     }
 
     return (
-        <div className="h-20 flex flex-row gap-2 p-2">
+        <div className="h-20 flex flex-row gap-2 mx-auto">
             { settings.images.trueOrFalse.map((data: ImageData, index: number) => <AppearancePart altText={ data.altText } index={ index } info={ data.info } onSelect={ onSelect } url={ data.url } selectedIndex={ appearanceIndex } key={ index } />
             )}
         </div>
