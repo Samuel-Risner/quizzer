@@ -1,27 +1,25 @@
 import React, { useState } from "react";
-import DataHandlerParent from "../dataHandlers/parents";
 
 type Props = {
-    dataHandler: DataHandlerParent;
+    url: string;
+    changeUrl: (url: string) => void;
+    useImage: boolean;
+    changeUseImage: (use: boolean) => void;
 }
 
-export default function UseImage({ dataHandler }: Props) {
-    const [ url, setUrl ] = useState<string>(dataHandler.getImgUrl() || "");
-    const [ useUrl, setUseUrl ] = useState<boolean>(dataHandler.getImgUrl() !== null);
-
+export default function UseImage({ url, changeUrl, useImage, changeUseImage }: Props) {
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.currentTarget.checked) {
-            dataHandler.setImgUrl(url);
-            setUseUrl(true);
+            changeUrl(url)
+            changeUseImage(true);
         } else {
-            dataHandler.setImgUrl(null);
-            setUseUrl(false);
+            changeUrl("");
+            changeUseImage(false);
         }
     }
 
     const handleOnChangeUrlInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUrl(e.currentTarget.value);
-        dataHandler.setImgUrl(e.currentTarget.value);
+        changeUrl(e.currentTarget.value);
     }
 
     return (
@@ -32,9 +30,9 @@ export default function UseImage({ dataHandler }: Props) {
             </label>
             <label>
                 Bitte URL eingeben:
-                <input disabled={ !useUrl } onChange={ handleOnChangeUrlInput } />
+                <input disabled={ !useImage } onChange={ handleOnChangeUrlInput } />
             </label>
-            { useUrl? <img src={ url } /> : <></> }
+            { useImage? <img src={ url } /> : <></> }
         </div>
     );
 }

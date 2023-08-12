@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
-import DataHandlerParent from "../dataHandlers/parents";
 
 type Props = {
+    name: string;
+    changeName: (name: string) => void;
     fetchNamesFunction: () => Promise<string[]>;
-    dataHandler: DataHandlerParent;
 }
 
-export default function InputName({ fetchNamesFunction, dataHandler }: Props) {
-    const [ name, changeName ] = useState<string>(dataHandler.getNameOrEmptyString());
-    const [ nameExists, changeNameExists ] = useState<boolean | null>(null);
+export default function InputName({ name, changeName, fetchNamesFunction }: Props) {
+    const [ nameExists, changeNameExists ] = useState<boolean>(true);
     const { data, status } = useQuery("overview", fetchNamesFunction);
 
     if (status === "loading") return <div>Bereits vorhandene Namen werden geladen...</div>;
@@ -23,19 +22,16 @@ export default function InputName({ fetchNamesFunction, dataHandler }: Props) {
 
         changeNameExists(false);
         changeName(e.currentTarget.value);
-        dataHandler.setName(e.currentTarget.value);
     }
 
     let nameCheckJSX: JSX.Element = <></>;
 
     if (name === "") {
         nameCheckJSX = <div className="text-red-500">Bitte einen Namen eingeben!</div>
-    } else if (nameExists === true) {
+    } else if (nameExists) {
         nameCheckJSX = <div className="text-red-500">Der Name "{ name }" existiert bereits!</div>
-    } else if (nameExists === false) {
-        nameCheckJSX = <div className="text-green-500">Der Name "{ name }" kann verwendet werden.</div>
     } else {
-        nameCheckJSX = <></>;
+        nameCheckJSX = <div className="text-green-500">Der Name "{ name }" kann verwendet werden.</div>
     }
 
     return (
