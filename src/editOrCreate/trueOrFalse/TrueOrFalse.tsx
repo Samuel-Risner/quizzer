@@ -72,7 +72,7 @@ export default function TrueOrFalse() {
                     questionData={ JSON.stringify(questionDataToSave)}
                     questionFileName={ `${questionName}.json` }
                     questionUrl={ `Fragen/WahrOderFalsch/${questionName}.json` }
-                /> : <div>Bitte alles ausfüllen!</div> }
+                /> : <div className="text-red-500">Bitte alles ausfüllen!</div> }
             </form>
         </div>
     );
