@@ -26,14 +26,16 @@ export default function InputName({ fetchNamesFunction, dataHandler }: Props) {
         dataHandler.setName(e.currentTarget.value);
     }
 
-    let nameExistsJSX: JSX.Element = <></>;
+    let nameCheckJSX: JSX.Element = <></>;
 
-    if (nameExists === true) {
-        nameExistsJSX = <div className="text-red-500">Der Name "{ name }" existiert bereits!</div>
+    if (name === "") {
+        nameCheckJSX = <div className="text-red-500">Bitte einen Namen eingeben!</div>
+    } else if (nameExists === true) {
+        nameCheckJSX = <div className="text-red-500">Der Name "{ name }" existiert bereits!</div>
     } else if (nameExists === false) {
-        nameExistsJSX = <div className="text-green-500">Der Name "{ name }" kann verwendet werden.</div>
+        nameCheckJSX = <div className="text-green-500">Der Name "{ name }" kann verwendet werden.</div>
     } else {
-        nameExistsJSX = <></>;
+        nameCheckJSX = <></>;
     }
 
     return (
@@ -42,7 +44,7 @@ export default function InputName({ fetchNamesFunction, dataHandler }: Props) {
                 Bitte den Namen eingeben:
                 <input onChange={ handleNameInput } defaultValue={ name } type="text" name="name" />
             </label>
-            { nameExistsJSX }
+            { nameCheckJSX }
         </div>
     );
 }
