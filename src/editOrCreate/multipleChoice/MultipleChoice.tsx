@@ -6,11 +6,7 @@ import Option from "./Option";
 import InputQuestion from "../shared/InputQuestion";
 import InputName from "../../components/InputName";
 import Save from "../../components/Save";
-
-type OptionData = {
-    text: string;
-    isCorrect: boolean;
-}
+import { Data, OptionData } from "../../types/multipleChoice";
 
 export default function MultipleChoice() {
     const [ questionName, setQuestionName ] = useState<string>("");
@@ -72,7 +68,11 @@ export default function MultipleChoice() {
         setOptionData(optionData.slice(0));
     }
 
-    const questionDataToSave = {
+    const questionDataToSave: Data = {
+        name: questionName,
+        question: question,
+        options: optionData,
+        url: undefined
     }
 
     return (
