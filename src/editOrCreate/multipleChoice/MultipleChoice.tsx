@@ -92,12 +92,12 @@ export default function MultipleChoice() {
                     useNames={ true }
 
                     namesData={ JSON.stringify([questionName, ...data]) }
-                    namesFileName="wahrOderFalsch.json"
-                    namesUrl="Namen/wahrOderFalsch.json"
+                    namesFileName="multipleChoice.json"
+                    namesUrl="Namen/multipleChoice.json"
 
                     questionData={ JSON.stringify(questionDataToSave)}
                     questionFileName={ `${questionName}.json` }
-                    questionUrl={ `Fragen/WahrOderFalsch/${questionName}.json` }
+                    questionUrl={ `Fragen/MultipleChoice/${questionName}.json` }
                 /> : <div className="text-red-500">Bitte alles ausfüllen!</div> }
             </form>
         </div>
