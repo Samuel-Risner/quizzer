@@ -3,6 +3,9 @@ import { useQuery } from "react-query";
 
 import { fetchNamesMultipleChoice } from "../../fetchers";
 import Option from "./Option";
+import InputQuestion from "../shared/InputQuestion";
+import InputName from "../../components/InputName";
+import Save from "../../components/Save";
 
 type OptionData = {
     text: string;
@@ -10,21 +13,33 @@ type OptionData = {
 }
 
 export default function MultipleChoice() {
-    const [ currentlyEditing, setCurrentlyEditing ] = useState<boolean>(true);
+    const [ questionName, setQuestionName ] = useState<string>("");
+    const [ question, setQuestion ] = useState<string>("");
     const [ optionData, setOptionData ] = useState<OptionData[]>([]);
+    const [ currentlyEditing, setCurrentlyEditing ] = useState<boolean>(true);
 
     const { data, status, refetch } = useQuery("overview", fetchNamesMultipleChoice);
 
     if (status === "loading") return <div>Bereits vorhandene Namen werden geladen...</div>;
     if ((status === "error") || (data === undefined)) return <div>Die bereits vorhandenen Namen konnten nicht geladen werden!</div>;
 
+    const changeQuestionName = (name: string) => { setQuestionName(name); }
+    const changeQuestion = (question: string) => { setQuestion(question); }
+    const changeCurrentlyEditing = (editing: boolean) => { setCurrentlyEditing(editing); }
+
     const resetQuestion = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         e.currentTarget.reset();
         refetch();
 
-        setCurrentlyEditing(true);
+        e.preventDefault();
+        e.currentTarget.reset();
+        refetch();
+
+        setQuestionName("");
+        setQuestion("");
         setOptionData([]);
+        setCurrentlyEditing(true);
     }
 
     const addQuestion = () => {
@@ -65,9 +80,25 @@ export default function MultipleChoice() {
             <form onSubmit={ resetQuestion } className="flex flex-col gap-2 text-center p-2">
                 <button type="submit" className="bg-pink-400 px-2 rounded-lg mx-auto">Zurücksetzen</button>
                 { currentlyEditing? <>
+                    <InputName name={ questionName } changeName={ changeQuestionName } allNames={ data } />
+                    <InputQuestion question={ question } changeQuestion={ changeQuestion } />
                     <button type="button" onClick={ addQuestion } className="bg-pink-400 px-2 rounded-lg mx-auto">Option hinzufügen</button>
                     { optionData.map((value: OptionData, index: number) => <Option key={ index } index={ index } changeIndex={ changeIndex } text={ value.text } changeText={ changeText } isCorrect={ value.isCorrect } changeIsCorrect={ changeIsCorrect } />)}
                 </> : <></> }
+                { ((questionName !== "") && (question !== ""))? <Save
+                    currentlyEditing={ currentlyEditing }
+                    changeCurrentlyEditing={ changeCurrentlyEditing }
+
+                    useNames={ true }
+
+                    namesData={ JSON.stringify([questionName, ...data]) }
+                    namesFileName="wahrOderFalsch.json"
+                    namesUrl="Namen/wahrOderFalsch.json"
+
+                    questionData={ JSON.stringify(questionDataToSave)}
+                    questionFileName={ `${questionName}.json` }
+                    questionUrl={ `Fragen/WahrOderFalsch/${questionName}.json` }
+                /> : <div className="text-red-500">Bitte alles ausfüllen!</div> }
             </form>
         </div>
     );
