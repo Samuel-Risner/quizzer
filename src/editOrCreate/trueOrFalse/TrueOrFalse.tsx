@@ -62,8 +62,8 @@ export default function TrueOrFalse() {
                     <SelectAppearance appearanceIndex={ appearanceIndex } changeAppearanceIndex={ changeAppearanceIndex } />
                     <InputQuestion question={ question } changeQuestion={ changeQuestion } />
                     <QuestionIsCorrect questionIsCorrect={ questionIsCorrect } changeQuestionIsCorrect={ changeQuestionIsCorrect} />
-                    <UseImage url={ imageUrl } changeUrl={ changeImageUrl } useImage={ useImage } changeUseImage={ changeUseImage } /></> : <></>
-                }
+                    <UseImage url={ imageUrl } changeUrl={ changeImageUrl } useImage={ useImage } changeUseImage={ changeUseImage } />
+                </> : <></>}
 
                 { ((questionName !== "") && (question !== ""))? <Save
                     currentlyEditing={ currentlyEditing }
