@@ -8,11 +8,13 @@ import SelectAppearance from "./SelectAppearance";
 import Save from "../../components/Save";
 import InputQuestion from "./InputQuestion";
 import { Data } from "../../types/trueOrFalse";
+import QuestionIsCorrect from "./QuestionIsCorrect";
 
 export default function TrueOrFalse() {
     const [ questionName, setQuestionName ] = useState<string>("");
     const [ appearanceIndex, setAppearanceIndex ] = useState<number>(0);
     const [ question, setQuestion ] = useState<string>("");
+    const [ questionIsCorrect, setQuestionIsCorrect ] = useState<boolean>(true);
     const [ imageUrl, setImageUrl ] = useState<string>("");
     const [ useImage, setUseImage ] = useState<boolean>(false);
     const [ currentlyEditing, setCurrentlyEditing ] = useState<boolean>(true);
@@ -25,6 +27,7 @@ export default function TrueOrFalse() {
     const changeQuestionName = (name: string) => { setQuestionName(name); }
     const changeAppearanceIndex = (index: number) => { setAppearanceIndex(index); }
     const changeQuestion = (question: string) => { setQuestion(question); }
+    const changeQuestionIsCorrect = (correct: boolean) => { setQuestionIsCorrect(correct); }
     const changeImageUrl = (url: string) => { setImageUrl(url); }
     const changeUseImage = (use: boolean) => { setUseImage(use); }
     const changeCurrentlyEditing = (editing: boolean) => { setCurrentlyEditing(editing); }
@@ -36,15 +39,17 @@ export default function TrueOrFalse() {
         setQuestionName("");
         setAppearanceIndex(0);
         setQuestion("");
+        setQuestionIsCorrect(true);
         setImageUrl("");
         setUseImage(false);
+        setCurrentlyEditing(true);
     }
 
     const questionDataToSave: Data = {
         name: questionName,
         appearanceIndex: appearanceIndex,
         question: question,
-        correct: false,
+        correct: questionIsCorrect,
         url: useImage? imageUrl : undefined
     }
 
@@ -56,6 +61,7 @@ export default function TrueOrFalse() {
                     <InputName name={ questionName } changeName={ changeQuestionName } allNames={ data } />
                     <SelectAppearance appearanceIndex={ appearanceIndex } changeAppearanceIndex={ changeAppearanceIndex } />
                     <InputQuestion question={ question } changeQuestion={ changeQuestion } />
+                    <QuestionIsCorrect questionIsCorrect={ questionIsCorrect } changeQuestionIsCorrect={ changeQuestionIsCorrect} />
                     <UseImage url={ imageUrl } changeUrl={ changeImageUrl } useImage={ useImage } changeUseImage={ changeUseImage } /></> : <></>
                 }
 
