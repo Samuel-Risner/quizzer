@@ -63,7 +63,7 @@ export default function TrueOrFalse() {
                     <InputQuestion question={ question } changeQuestion={ changeQuestion } />
                     <QuestionIsCorrect questionIsCorrect={ questionIsCorrect } changeQuestionIsCorrect={ changeQuestionIsCorrect} />
                     <UseImage url={ imageUrl } changeUrl={ changeImageUrl } useImage={ useImage } changeUseImage={ changeUseImage } />
-                </> : <></>}
+                </> : <></> }
 
                 { ((questionName !== "") && (question !== ""))? <Save
                     currentlyEditing={ currentlyEditing }
