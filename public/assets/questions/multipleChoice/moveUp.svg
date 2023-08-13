@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500"
+   height="500"
+   viewBox="0 0 132.29166 132.29167"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="moveUp.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.3380612"
+     inkscape:cx="310.8976"
+     inkscape:cy="244.75712"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect3"
+       is_visible="true"
+       lpeversion="1.3"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       uniform="false" />
+  </defs>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#000000;stroke-width:0.414844"
+       id="path1"
+       cx="66.145836"
+       cy="-66.145836"
+       r="66.145836"
+       transform="scale(1,-1)" />
+    <circle
+       style="fill:#ffffff;stroke-width:0.501877"
+       id="path2"
+       cx="66.145836"
+       cy="-66.145836"
+       r="52.916668"
+       transform="scale(1,-1)" />
+    <rect
+       style="fill:#000000;stroke-width:0.189823"
+       id="rect2"
+       width="13.229167"
+       height="66.410416"
+       x="59.53125"
+       y="-112.44791"
+       transform="scale(1,-1)" />
+    <path
+       style="fill:#000000;stroke-width:0.264583"
+       d="m 33.072917,46.302089 c 1.581891,0 66.145833,0 66.145833,0 L 66.145833,19.843752 Z"
+       id="path3"
+       sodipodi:nodetypes="cccc" />
+  </g>
+</svg>
