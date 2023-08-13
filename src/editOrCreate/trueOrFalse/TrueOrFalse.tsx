@@ -6,7 +6,7 @@ import UseImage from "../../components/UseImage";
 import { fetchNamesTrueOrFalse } from "../../fetchers";
 import SelectAppearance from "./SelectAppearance";
 import Save from "../../components/Save";
-import InputQuestion from "./inputQuestion";
+import InputQuestion from "./InputQuestion";
 import { Data } from "../../types/trueOrFalse";
 
 export default function TrueOrFalse() {
